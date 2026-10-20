@@ -11,7 +11,9 @@ CI.run do
 
   step "Docs: agent instructions", "script/check_agents_docs"
 
-  step "Style: Ruby", "bin/rubocop -f simple"
+  # The explicit "." keeps AllCops/Exclude working when the checkout's path has a hidden
+  # directory (e.g. a worktree under .claude/): RuboCop skips per-file excludes for those.
+  step "Style: Ruby", "bin/rubocop -f simple ."
 
   step "Gemfile: Drift check", "bin/bundle-drift check"
   step "Security: Gem audit", "bin/bundler-audit check --update"

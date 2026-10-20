@@ -39,7 +39,11 @@ class ColumnPaginationRefreshTest < ApplicationSystemTestCase
       assert_selector "##{dom_id(@column, :cards)} .card", count: @column.cards.active.count, wait: PAGE_LOAD_WAIT
     end
 
+    # Clicking a collapsed column's expander leaves the pointer over where its cards appear. A card
+    # that scrolls under the pointer is hover-selected and scrolled back into view, taking the
+    # pagination link out of view again. The fixed bar stays put and holds no cards.
     def scroll_column_to_bottom
+      find(".bar").hover
       link = find("##{dom_id(@column, :cards)} .pagination-link", visible: :all)
       page.execute_script("arguments[0].scrollIntoView()", link)
     end
