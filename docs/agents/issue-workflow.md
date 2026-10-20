@@ -14,6 +14,11 @@ worktree root:
 It needs mise 2026.8.10 or later and a trusted `.mise.toml` on the machine. If
 it fails on either, stop and ask; don't work around it.
 
+An agent's shell may not activate mise, so `ruby -v` can print the macOS
+system Ruby instead of the one in `.ruby-version`. If it does, prefix every
+Ruby command in this file with `mise exec --`, for example
+`mise exec -- bin/ci`.
+
 `tmp/saas.txt` must not exist. This fork is OSS-only, so the tests run on
 SQLite.
 
