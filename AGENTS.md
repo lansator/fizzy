@@ -82,3 +82,9 @@ Default vocabulary: needs-triage, needs-info, ready-for-agent, ready-for-human, 
 ### Domain docs
 
 Single-context: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Working a GitHub issue
+
+When you are given an issue to take to a merged PR on your own, follow
+`docs/agents/issue-workflow.md` exactly: worktree setup, gates, Codex review,
+merge and the report.
